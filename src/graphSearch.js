@@ -33,6 +33,7 @@ export class MovieGraph {
     constructor() {
         this.actors = new Map();
         this.movies = new Map();
+        this.TARGET_ACTOR = 'Tom Cruise';
     }
 
     addMovie(movieData) {
@@ -49,8 +50,8 @@ export class MovieGraph {
         });
     }
 
-    findPath(startActorName, targetActorName) {
-        return findPath(this, startActorName, targetActorName);
+    findPath(startActorName) {
+        return findPath(this, startActorName, this.TARGET_ACTOR);
     }
 }
 

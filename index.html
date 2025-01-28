@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actor Graph Search</title>
+    <title>Six Degrees of Tom Cruise</title>
     <link rel="stylesheet" href="./src/styles.css" />
 </head>
 <body>
     <div class="container">
-        <div id="loading">Loading actors data...</div>
-        <div id="search-container" style="display: none;">
-            <span>Find path from:</span>
-            <select id="fromActorSelect"></select>
-            <span>to:</span>
-            <select id="toActorSelect"></select>
+        <h1>Six Degrees of Tom Cruise</h1>
+        <div class="description">
+            Discover how any actor connects to Tom Cruise through their movie collaborations
         </div>
+        
+        <div id="loading">Loading actors database...</div>
+        
+        <div id="search-container" style="display: none;">
+            <label for="fromActorSelect">Select an actor:</label>
+            <select id="fromActorSelect">
+                <option value="">Choose an actor...</option>
+            </select>
+        </div>
+        
         <div id="result"></div>
     </div>
     <script type="module" src="./src/main.js"></script>

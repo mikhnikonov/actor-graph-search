@@ -1,51 +1,54 @@
-Actor Graph Search
+# ACTOR GRAPH SEARCH
 
-A web application that finds the shortest path between any two actors through their movie collaborations.
+Find connections between actors through their movie collaborations!
 
-Features
-- Builds a graph of actor connections through movies
-- Finds shortest path between two actors using BFS algorithm
-- Interactive UI with dropdown selection of actors
-- Real-time path calculation and display
+✨ WHAT IT DOES
+--------------
+Enter any two actors and discover how they're connected through their movie collaborations. 
+The app finds the shortest path between them, showing you the movies and actors that connect them.
 
-Installation
-------------
-## Install dependencies
-yarn install
+Example:
+Julia Roberts → Eat Pray Love → Richard Jenkins → Spotlight → Mark Ruffalo
 
-Development
+🚀 QUICK START
+-------------
+1. Install dependencies:
+   $ yarn install
 
-## Start development server
-yarn start
+2. Start development server:
+   $ yarn start
 
-# Testing
+3. Open browser at http://localhost:8080
 
-## Run tests
-yarn test
+🧪 TESTING
+----------
+Run all tests:
+   $ yarn test
 
-## Run tests in watch mode
-yarn test:watch
+Development mode:
+   $ yarn test:watch
 
-Project Structure
+📁 PROJECT LAYOUT
 ---------------
-/
-├── src/
-│   ├── dataService.js    # Data fetching logic
-│   ├── graphSearch.js    # Graph and node classes
-│   ├── pathFinder.js     # Path finding algorithm
-│   ├── ui.js            # UI rendering logic
-│   └── main.js          # Application entry point
-├── data.json            # Movie and actor data
-└── index.html          # Main HTML file
+src/
+ ├─ dataService.js   [Data fetching]
+ ├─ graphSearch.js   [Graph structure]
+ ├─ pathFinder.js    [BFS algorithm]
+ ├─ ui.js           [Interface logic]
+ └─ main.js         [Entry point]
 
-Algorithm
----------
-The application uses Breadth-First Search (BFS) to find the shortest path between actors through their movie collaborations. This ensures the path with the minimum number of intermediary actors is found.
+🔍 UNDER THE HOOD
+----------------
+• Graph Theory: Uses a bipartite graph where actors and movies are nodes
+• Algorithm: Breadth-First Search (BFS) ensures shortest paths
+• Data Structures: Efficient Sets and Maps for quick lookups
+• Modern JS: ES6 modules, async/await, and modern APIs
 
-Implementation Details
---------------------
-- Uses ES6 modules for code organization
-- Implements a bipartite graph structure (actors and movies as nodes)
-- Utilizes Sets and Maps for efficient data storage and lookup
-- Employs async/await for data fetching
-- Includes Jest testing framework for unit tests
+🌐 BROWSER REQUIREMENTS
+---------------------
+Your browser needs to support:
+• ES6 Modules
+• Async/Await
+• Set & Map
+
+Made with ♥️ using modern JavaScript
