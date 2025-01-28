@@ -1,5 +1,6 @@
 # ACTOR GRAPH SEARCH
-
+<!-- README.md -->
++ [![cov](https://<you>.github.io/<repo>/badges/coverage.svg)](https://github.com/mikhnikonov/actor-graph-search/actions)
 Find connections between actors through their movie collaborations!
 
 ✨ WHAT IT DOES
@@ -48,7 +49,6 @@ src/
 • Graph Theory: Uses a bipartite graph where actors and movies are nodes
 • Algorithm: Breadth-First Search (BFS) ensures shortest paths
 • Data Structures: Efficient Sets and Maps for quick lookups
-• Modern JS: ES6 modules, async/await, and modern APIs
 
 🌐 BROWSER REQUIREMENTS
 ---------------------
@@ -62,7 +62,6 @@ Your browser needs to support:
 1. Testing Enhancements:
    • Visual regression testing with Percy or Chromatic
    • E2E testing with Cypress
-   • Component testing with Testing Library
    • Snapshot testing for UI components
 
 2. Analytics & Monitoring:
@@ -72,9 +71,8 @@ Your browser needs to support:
 
 3. User Experience:
    • Autocomplete for actor search
-   • Visualization of the actor-movie graph
-   • Mobile-responsive design
-   • Dark/Light theme support
+   • Visualization of the actor-movie graph with d3
+   • Dark/Light theme support 
 
 4. Performance:
    • Data caching strategy
