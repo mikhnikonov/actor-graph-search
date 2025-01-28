@@ -1,14 +1,22 @@
 // Import required modules
-import { initializeGraph } from './graphSearch.js';
+import { MovieGraph } from './models.js';
+import { fetchMovieData } from './dataService.js';
 import { createUI } from './ui.js';
 
-// Initialize application
-async function init() {
-    const graph = await initializeGraph();
-    if (graph) {
-        await createUI(graph);
+async function initializeGraph() {
+    const result = await fetchMovieData();
+    if (!result.success) {
+        return { success: false, error: result.error };
     }
+    
+    const graph = new MovieGraph();
+    result.data.forEach(movie => graph.addMovie(movie));
+    return { success: true, data: graph };
 }
 
-// Start the application
+async function init() {
+    const result = await initializeGraph();
+    await createUI(result);
+}
+
 init();

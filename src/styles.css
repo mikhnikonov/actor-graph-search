@@ -12,6 +12,8 @@
     --color-arrow: #3b82f6;
     --color-actor: #10b981;
     --color-movie: #8b5cf6;
+    --color-error: #ef4444;
+
     /* Spacing */
     --space-sm: 10px;
     --space-md: 20px;
@@ -63,6 +65,14 @@ h1 {
     text-align: center;
     color: var(--color-text-secondary);
     font-style: italic;
+}
+
+#error {
+    display: none;
+    text-align: center;
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    margin: var(--space-lg) 0;
 }
 
 #search-container {

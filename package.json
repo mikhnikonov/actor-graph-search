@@ -16,6 +16,5 @@
     "preview": "vite preview",
     "test": "jest",
     "test:watch": "jest --watch"
-  },
-  "dependencies": {}
+  }
 }

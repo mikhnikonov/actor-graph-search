@@ -1,5 +1,4 @@
 import { findPath } from './pathFinder.js';
-import { fetchMovieData } from './dataService.js';
 
 // Class representing an actor node in the graph
 class Actor {
@@ -37,31 +36,24 @@ export class MovieGraph {
     }
 
     addMovie(movieData) {
+        // Create and store new movie node
         const movie = new Movie(movieData.title);
         this.movies.set(movieData.title, movie);
 
+        // Process each actor in the cast
         movieData.cast.forEach(actorName => {
+            // Get existing actor or create new one
             let actor = this.actors.get(actorName);
             if (!actor) {
                 actor = new Actor(actorName);
                 this.actors.set(actorName, actor);
             }
+            // Connect movie and actor nodes
             movie.addActor(actor);
         });
     }
 
-    findPath(startActorName) {
+    getPath(startActorName) {
         return findPath(this, startActorName, this.TARGET_ACTOR);
     }
-}
-
-export async function initializeGraph() {
-    const graph = new MovieGraph();
-    const movies = await fetchMovieData();
-    
-    if (movies) {
-        movies.forEach(movie => graph.addMovie(movie));
-    }
-    
-    return graph;
 }

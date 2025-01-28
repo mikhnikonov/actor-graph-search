@@ -1,4 +1,4 @@
-import { MovieGraph } from '../graphSearch';
+import { MovieGraph } from '../models';
 
 describe('MovieGraph', () => {
     let graph;
