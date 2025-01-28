@@ -16,7 +16,7 @@ Julia Roberts → Eat Pray Love → Richard Jenkins → Spotlight → Mark Ruffa
    $ yarn install
 
 2. Start development server:
-   $ yarn start
+   $ yarn dev
 
 3. Open browser at http://localhost:8080
 
@@ -30,12 +30,18 @@ Development mode:
 
 📁 PROJECT LAYOUT
 ---------------
+public/
+ ├─ index.html &nbsp; &nbsp; &nbsp;	[Main HTML]
+ ├─ index.js	&nbsp; &nbsp; &nbsp; [Browser entry point]
+ ├─ styles.css	&nbsp; &nbsp; &nbsp; [Styling]
+ └─ data.json	&nbsp; &nbsp; &nbsp; [Movie database]
+
 src/
- ├─ dataService.js   [Data fetching]
- ├─ graphSearch.js   [Graph structure]
- ├─ pathFinder.js    [BFS algorithm]
- ├─ ui.js           [Interface logic]
- └─ main.js         [Entry point]
+ ├─ models.js	&nbsp; &nbsp; &nbsp; [Graph structure]
+ ├─ pathFinder.js	&nbsp; &nbsp; &nbsp; [BFS algorithm]
+ ├─ dataService.js	&nbsp; &nbsp; &nbsp; [Data fetching]
+ ├─ ui.js	&nbsp; &nbsp; &nbsp; [Interface logic]
+ └─ main.js	&nbsp; &nbsp; &nbsp; [App initialization]
 
 🔍 UNDER THE HOOD
 ----------------
@@ -50,5 +56,29 @@ Your browser needs to support:
 • ES6 Modules
 • Async/Await
 • Set & Map
+
+💡 POSSIBLE IMPROVEMENTS
+---------------------
+1. Testing Enhancements:
+   • Visual regression testing with Percy or Chromatic
+   • E2E testing with Cypress
+   • Component testing with Testing Library
+   • Snapshot testing for UI components
+
+2. Analytics & Monitoring:
+   • User behavior tracking with Mixpanel
+   • Performance monitoring with Web Vitals
+   • Error tracking with Sentry
+
+3. User Experience:
+   • Autocomplete for actor search
+   • Visualization of the actor-movie graph
+   • Mobile-responsive design
+   • Dark/Light theme support
+
+4. Performance:
+   • Data caching strategy
+   • Progressive loading for large datasets
+   • Service Worker for offline support
 
 Made with ♥️ using modern JavaScript

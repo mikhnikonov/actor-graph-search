@@ -33,4 +33,21 @@ describe('MovieGraph', () => {
         expect(actor1.movies.has(movie)).toBeTruthy();
         expect(movie.cast.has(actor1)).toBeTruthy();
     });
+
+    test('should find path between actors', () => {
+        const movie1Data = {
+            title: 'Mission Impossible',
+            cast: ['Tom Cruise', 'Ving Rhames']
+        };
+        const movie2Data = {
+            title: 'Pulp Fiction',
+            cast: ['Ving Rhames', 'John Travolta']
+        };
+
+        graph.addMovie(movie1Data);
+        graph.addMovie(movie2Data);
+
+        const path = graph.getPath('John Travolta');
+        expect(path).toBeDefined();
+    });
 });

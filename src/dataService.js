@@ -1,6 +1,6 @@
 export async function fetchMovieData() {
     try {
-        const response = await fetch('./data.json');
+        const response = await fetch('/data.json'); 
         if (!response.ok) {
             throw new Error('Failed to load movie data');
         }
@@ -21,7 +21,7 @@ export async function fetchMovieData() {
         console.error('Error loading movie data:', error);
         return { 
             success: false, 
-            error: 'Unable to load movie database. Please try again later.' 
+            error: `Unable to load movie database. ${error}` 
         };
     }
 }

@@ -1,4 +1,3 @@
-// Import required modules
 import { MovieGraph } from './models.js';
 import { fetchMovieData } from './dataService.js';
 import { createUI } from './ui.js';
@@ -14,9 +13,7 @@ async function initializeGraph() {
     return { success: true, data: graph };
 }
 
-async function init() {
+export async function init() {
     const result = await initializeGraph();
     await createUI(result);
 }
-
-init();
