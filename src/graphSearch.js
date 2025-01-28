@@ -1,3 +1,6 @@
+import { findPath } from './pathFinder.js';
+import { fetchMovieData } from './dataService.js';
+
 // Class representing an actor node in the graph
 class Actor {
     constructor(name) {
@@ -28,20 +31,17 @@ class Movie {
 // Class representing the bipartite graph of actors and movies
 export class MovieGraph {
     constructor() {
-        this.actors = new Map(); // Map of actor names to Actor objects
-        this.movies = new Map(); // Map of movie titles to Movie objects
+        this.actors = new Map();
+        this.movies = new Map();
     }
 
-    // Add a movie and its cast to the graph
     addMovie(movieData) {
         const movie = new Movie(movieData.title);
         this.movies.set(movieData.title, movie);
 
-        // Process each actor in the movie's cast
         movieData.cast.forEach(actorName => {
             let actor = this.actors.get(actorName);
             if (!actor) {
-                // Create new actor if not exists
                 actor = new Actor(actorName);
                 this.actors.set(actorName, actor);
             }
@@ -49,49 +49,10 @@ export class MovieGraph {
         });
     }
 
-    // Find shortest path between two actors using BFS
     findPath(startActorName, targetActorName) {
-        if (!this.actors.has(startActorName) || !this.actors.has(targetActorName)) return null;
-
-        const queue = [[startActorName, []]];
-        const visited = new Set();
-
-        while (queue.length > 0) {
-            const [currentActor, path] = queue.shift();
-            
-            if (currentActor === targetActorName) {
-                return path;
-            }
-
-            if (!visited.has(currentActor)) {
-                visited.add(currentActor);
-                const actor = this.actors.get(currentActor);
-
-                // Explore all movies of current actor
-                for (const movie of actor.movies) {
-                    // Check all costars in each movie
-                    for (const costar of movie.cast) {
-                        if (!visited.has(costar.name)) {
-                            queue.push([
-                                costar.name, 
-                                [...path, {
-                                    actor: currentActor,
-                                    movie: movie.title,
-                                    nextActor: costar.name
-                                }]
-                            ]);
-                        }
-                    }
-                }
-            }
-        }
-
-        return null; // No path found
+        return findPath(this, startActorName, targetActorName);
     }
 }
-
-// Initialize graph with data from JSON file
-import { fetchMovieData } from './dataService.js';
 
 export async function initializeGraph() {
     const graph = new MovieGraph();
