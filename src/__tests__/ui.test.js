@@ -1,4 +1,4 @@
-import { createUI } from '../ui';
+import { createUI, createPathDisplay } from '../ui';
 
 describe('UI Functions', () => {
     // Setup DOM elements before each test
@@ -92,5 +92,52 @@ describe('UI Functions', () => {
         expect(result.innerHTML).toContain('Actor1');
         expect(result.innerHTML).toContain('Movie1');
         expect(result.innerHTML).toContain('Tom Cruise');
+    });
+
+    test('should handle empty path array', () => {
+        const fromActor = 'Actor1';
+        const path = [];
+        
+        const result = createPathDisplay(fromActor, path);
+        expect(result).toBeNull();
+    });
+
+    test('should clear result when no actor selected', async () => {
+        const mockGraph = {
+            actors: new Map([['Actor1', {}]]),
+            TARGET_ACTOR: 'Tom Cruise',
+            getPath: jest.fn()
+        };
+
+        await createUI({ success: true, data: mockGraph });
+        
+        const select = document.getElementById('fromActorSelect');
+        const result = document.getElementById('result');
+        
+        // Set empty value and trigger change
+        select.value = '';
+        select.dispatchEvent(new Event('change'));
+
+        expect(result.textContent).toBe('');
+        expect(mockGraph.getPath).not.toHaveBeenCalled();
+    });
+
+    test('should show "no path" message when path is not found', async () => {
+        const mockGraph = {
+            actors: new Map([['Actor1', {}]]),
+            TARGET_ACTOR: 'Tom Cruise',
+            getPath: jest.fn().mockReturnValue(null)
+        };
+
+        await createUI({ success: true, data: mockGraph });
+        
+        const select = document.getElementById('fromActorSelect');
+        const result = document.getElementById('result');
+        
+        select.value = 'Actor1';
+        select.dispatchEvent(new Event('change'));
+
+        expect(result.innerHTML).toBe('No path found to Tom Cruise');
+        expect(mockGraph.getPath).toHaveBeenCalledWith('Actor1');
     });
 });

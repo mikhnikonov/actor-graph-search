@@ -1,5 +1,5 @@
 // Populates select element with sorted actor names
-function appendActorOptions(graph, fromSelect) {
+export function appendActorOptions(graph, fromSelect) {
     // Get all actors except Tom Cruise and sort them
     const sortedActors = [...graph.actors.keys()]
         .filter(name => name !== graph.TARGET_ACTOR)
@@ -15,8 +15,8 @@ function appendActorOptions(graph, fromSelect) {
 }
 
 // Creates HTML markup showing the path between actors through movies
-function createPathDisplay(fromActor, path) {
-    if (!path) {
+export function createPathDisplay(fromActor, path) {
+    if (!path || path.length === 0) {
         return null;
     }
 
@@ -42,7 +42,7 @@ function createPathDisplay(fromActor, path) {
 }
 
 // Updates the result display when a new actor is selected
-function updatePath(graph, fromSelect) {
+export function updatePath(graph, fromSelect) {
     const resultElement = document.getElementById('result');
     // Clear result if no actor selected
     if (!fromSelect.value) {
