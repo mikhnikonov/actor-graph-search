@@ -1,6 +1,6 @@
 export async function fetchMovieData() {
     try {
-        const response = await fetch('/data.json'); 
+        const response = await fetch('data.json'); 
         if (!response.ok) {
             throw new Error('Failed to load movie data');
         }
