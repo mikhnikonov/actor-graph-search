@@ -1,6 +1,6 @@
 # ACTOR GRAPH SEARCH
 <!-- README.md -->
-+ [![cov](https://<you>.github.io/<repo>/badges/coverage.svg)](https://github.com/mikhnikonov/actor-graph-search/actions)
++ [![cov](https://mikhnikonov.github.io/actor-graph-search/badges/coverage.svg)](https://github.com/mikhnikonov/actor-graph-search/actions)
 Find connections between actors through their movie collaborations!
 
 ✨ WHAT IT DOES
