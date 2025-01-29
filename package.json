@@ -21,6 +21,6 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "coverageReporter": "json-summary"
+    "coverageReporters": ["json-summary"]
   }
 }
